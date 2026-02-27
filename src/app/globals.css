@@ -7,6 +7,7 @@
   --neon-green: #39ff14;
   --neon-purple: #bf00ff;
   --neon-pink: #ff0080;
+  --neon-gold: #fbbf24;
   --surface: #111111;
   --surface-hover: #1a1a1a;
   --border: rgba(0, 255, 255, 0.15);
@@ -19,6 +20,7 @@
   --color-neon-green: var(--neon-green);
   --color-neon-purple: var(--neon-purple);
   --color-neon-pink: var(--neon-pink);
+  --color-neon-gold: var(--neon-gold);
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
   --color-border: var(--border);

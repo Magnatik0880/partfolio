@@ -215,7 +215,7 @@ export function ProjectsSection() {
                   </p>
 
                   {/* Tech tags */}
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.tech.map((tech, j) => (
                       <motion.span
                         key={tech}
