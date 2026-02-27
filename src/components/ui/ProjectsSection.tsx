@@ -2,7 +2,11 @@
 
 import { type FC } from 'react'
 import { motion } from 'framer-motion'
-import { Database, Bot, Shield, Globe, type LucideProps } from 'lucide-react'
+import {
+  Database, Bot, Shield, Globe,
+  HeartPulse, Smartphone, ExternalLink,
+  type LucideProps,
+} from 'lucide-react'
 import { useLanguage } from '@/hooks/useLanguage'
 import { projects } from '@/data/profile'
 import { ScrollReveal } from './ScrollReveal'
@@ -21,6 +25,8 @@ interface BentoEntry {
   Icon: FC<LucideProps>
   category: Record<Locale, string>
   status: string
+  url?: string
+  role?: Record<Locale, string>
 }
 
 const bentoConfig: BentoEntry[] = [
@@ -79,6 +85,46 @@ const bentoConfig: BentoEntry[] = [
     Icon: Globe,
     category: { ru: 'ВЕБ · РАЗРАБОТКА', en: 'WEB · DEVELOPMENT', kg: 'ВЕБ · ИШТЕП ЧЫГУУ' },
     status: 'AVAILABLE',
+  },
+  {
+    colSpan: 'md:col-span-1',
+    textColor: 'text-neon-cyan',
+    borderHover: 'hover:border-neon-cyan/30',
+    tagClass: 'border-neon-cyan/20 bg-neon-cyan/5 text-neon-cyan',
+    glowHover: 'hover:shadow-[0_0_50px_rgba(0,255,255,0.15)]',
+    gradientVar: '#00ffff',
+    accentLine: 'via-neon-cyan/50',
+    iconBg: 'bg-neon-cyan/10 border-neon-cyan/20',
+    num: '05',
+    Icon: HeartPulse,
+    category: { ru: 'СТОМАТОЛОГИЯ · МЕД', en: 'DENTAL · MEDICAL', kg: 'СТОМАТОЛОГИЯ · МЕД' },
+    status: 'LIVE',
+    url: 'https://примадентале.рф',
+    role: {
+      ru: 'Ведущий системный инженер',
+      en: 'Principal Systems Engineer',
+      kg: 'Башкы системалык инженер',
+    },
+  },
+  {
+    colSpan: 'md:col-span-2',
+    textColor: 'text-neon-green',
+    borderHover: 'hover:border-neon-green/30',
+    tagClass: 'border-neon-green/20 bg-neon-green/5 text-neon-green',
+    glowHover: 'hover:shadow-[0_0_50px_rgba(57,255,20,0.15)]',
+    gradientVar: '#39ff14',
+    accentLine: 'via-neon-green/50',
+    iconBg: 'bg-neon-green/10 border-neon-green/20',
+    num: '06',
+    Icon: Smartphone,
+    category: { ru: 'МОБИЛЬНЫЕ · ИТ-УСЛУГИ', en: 'MOBILE · IT SERVICES', kg: 'МОБИЛДИК · ИТ' },
+    status: 'LIVE',
+    url: 'https://mobo.kg',
+    role: {
+      ru: 'Основатель / Главный инженер',
+      en: 'Founder / Principal Engineer',
+      kg: 'Негиздөөчү / Башкы инженер',
+    },
   },
 ]
 
@@ -149,9 +195,19 @@ export function ProjectsSection() {
                   </div>
 
                   {/* Title */}
-                  <h3 className={`text-xl font-bold mb-3 ${cfg.textColor}`}>
+                  <h3 className={`text-xl font-bold mb-1 ${cfg.textColor}`}>
                     {t(`projects.${project.id}.title`)}
                   </h3>
+
+                  {/* Role badge — shown only for commercial projects */}
+                  {cfg.role && (
+                    <p className="text-[10px] font-mono text-zinc-500 mb-3 tracking-wider">
+                      ↳ {cfg.role[locale]}
+                    </p>
+                  )}
+
+                  {/* No role = original mb-3 spacing already on title; add gap here */}
+                  {!cfg.role && <div className="mb-2" />}
 
                   {/* Description — flex-1 pushes tech tags to bottom */}
                   <p className="text-sm text-zinc-400 mb-5 leading-relaxed flex-1">
@@ -174,6 +230,29 @@ export function ProjectsSection() {
                       </motion.span>
                     ))}
                   </div>
+
+                  {/* Visit website — shown only for live commercial projects */}
+                  {cfg.url && (
+                    <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between gap-2">
+                      <motion.a
+                        href={cfg.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        whileHover={{ scale: 1.04, x: 2 }}
+                        whileTap={{ scale: 0.97 }}
+                        className={`inline-flex items-center gap-1.5 text-[11px] font-mono font-semibold
+                                    px-3 py-1.5 rounded-lg border transition-colors duration-200
+                                    opacity-70 hover:opacity-100 ${cfg.tagClass}`}
+                      >
+                        <ExternalLink size={10} strokeWidth={2.5} />
+                        {locale === 'ru' ? 'Открыть сайт' : locale === 'en' ? 'Visit website' : 'Сайтты ачуу'}
+                      </motion.a>
+                      <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest shrink-0">
+                        {locale === 'ru' ? '✦ Коммерческий' : locale === 'en' ? '✦ Commercial' : '✦ Коммерциялык'}
+                      </span>
+                    </div>
+                  )}
 
                 </div>
               </div>

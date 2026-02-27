@@ -117,4 +117,14 @@ export const projects = [
     id: 'web',
     tech: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Laravel', 'SEO'],
   },
+  {
+    id: 'primadentale',
+    url: 'https://примадентале.рф',
+    tech: ['Laravel', 'MySQL', 'Tailwind', 'Nginx', 'VPS', 'SEO'],
+  },
+  {
+    id: 'mobokg',
+    url: 'https://mobo.kg',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Docker', 'SEO'],
+  },
 ]

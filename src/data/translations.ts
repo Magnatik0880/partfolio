@@ -37,6 +37,12 @@ const translations: Record<Locale, Record<string, string>> = {
     'projects.web.title': 'Создание Сайтов',
     'projects.web.desc': 'Разработка сайтов под ключ: портфолио, лендинги, корпоративные сайты, SaaS-платформы. Современный стек (Next.js, React, Laravel), SEO-оптимизация, высокая скорость, полная мобильная адаптация.',
 
+    'projects.primadentale.title': 'PrimaDentale',
+    'projects.primadentale.desc': 'Коммерческий сайт под ключ для поставщика стоматологического оборудования и медицинских решений. Полный цикл: архитектура, разработка, UI/UX, хостинг, домен, безопасность и SEO. Продакшен с 2024 года.',
+
+    'projects.mobokg.title': 'MOBO.KG',
+    'projects.mobokg.desc': 'Продакшен бизнес-платформа сервисного центра мобильной и IT-техники. Полное владение: бренд, архитектура, разработка, SEO, хостинг и доменная инфраструктура. Рынок Кыргызстана, 2024–наст. время.',
+
     'hardware.title': 'Hardware & Ремонт',
     'hardware.desc': 'Работаю на уровне платы: micro-soldering, BGA, замена чипов, диагностика питания. Android: bootloader, TWRP, Magisk, кастомные прошивки. Linux / Kali NetHunter. Сборка и диагностика ПК.',
 
@@ -91,6 +97,12 @@ const translations: Record<Locale, Record<string, string>> = {
 
     'projects.web.title': 'Website Development',
     'projects.web.desc': 'Full-stack website development end-to-end: portfolios, landing pages, corporate sites, SaaS platforms. Modern stack (Next.js, React, Laravel), SEO-optimised, fast-loading, fully responsive.',
+
+    'projects.primadentale.title': 'PrimaDentale',
+    'projects.primadentale.desc': 'End-to-end commercial website for a dental equipment and medical solutions supplier. Full ownership: architecture, development, UI/UX, hosting, domain, security and SEO optimisation. Live in production since 2024.',
+
+    'projects.mobokg.title': 'MOBO.KG',
+    'projects.mobokg.desc': 'Production business platform for a mobile & IT service center. Full ownership: brand, architecture, development, SEO, hosting and domain infrastructure. Serving the Kyrgyzstan market since 2024.',
 
     'hardware.title': 'Hardware & Repair',
     'hardware.desc': 'Board-level work: micro-soldering, BGA, chip replacement, power diagnostics. Android: bootloader, TWRP, Magisk, custom firmware. Linux / Kali NetHunter. PC assembly and diagnostics.',
@@ -147,6 +159,12 @@ const translations: Record<Locale, Record<string, string>> = {
 
     'projects.web.title': 'Сайт Куруу',
     'projects.web.desc': 'Веб-сайттарды баштан аяк куруу: портфолио, лендинг, корпоративтик сайттар, SaaS. Заманбап технологиялар (Next.js, React, Laravel), SEO оптимизация, тез жүктөлүү, мобилдик адаптация.',
+
+    'projects.primadentale.title': 'PrimaDentale',
+    'projects.primadentale.desc': 'Стоматологиялык жабдуулар жана медициналык чечимдер жеткирүүчүсүнө коммерциялык сайт. Толук цикл: архитектура, иштеп чыгуу, UI/UX, хостинг, домен жана SEO. 2024-жылдан тартып продакшенда.',
+
+    'projects.mobokg.title': 'MOBO.KG',
+    'projects.mobokg.desc': 'Мобилдик жана IT-техниканын кызмат борборунун бизнес-платформасы. Толук жоопкерчилик: бренд, архитектура, иштеп чыгуу, SEO, хостинг. Кыргызстан рыногу, 2024–азыркы убак.',
 
     'hardware.title': 'Жабдуулар & Оңдоо',
     'hardware.desc': 'Плата деңгээлинде иштейм: micro-soldering, BGA, чипти алмаштыруу, электр диагностикасы. Android: bootloader, TWRP, Magisk, кастомдук прошивкалар. Linux / Kali NetHunter. ПК чогулдуруу жана диагностика.',
