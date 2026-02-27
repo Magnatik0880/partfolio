@@ -26,8 +26,11 @@ export function NavBar() {
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false)
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    // Wait for mobile menu close animation (300ms) before scrolling
+    setTimeout(() => {
+      const el = document.querySelector(href)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }, 320)
   }
 
   return (
