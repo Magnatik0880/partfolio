@@ -1,0 +1,120 @@
+import type { SkillGroup } from '@/types'
+
+export const skillGroups: SkillGroup[] = [
+  {
+    id: 'languages',
+    title: { ru: 'Языки программирования', en: 'Programming Languages', kg: 'Программалоо тилдери' },
+    iconName: 'Code2',
+    skills: [
+      { label: 'Python',              level: 'primary' },
+      { label: 'TypeScript',          level: 'primary' },
+      { label: 'JavaScript ES2024+',  level: 'primary' },
+      { label: 'PHP / Laravel',       level: 'primary' },
+      { label: 'SQL',                 level: 'primary' },
+      { label: 'Bash / Shell',        level: 'advanced' },
+      { label: 'PowerShell',          level: 'advanced' },
+      { label: 'Go',                  level: 'advanced' },
+      { label: 'JSON / YAML / TOML',  level: 'advanced' },
+      { label: 'Rust',                level: 'conceptual' },
+      { label: 'C / C++',             level: 'conceptual' },
+    ],
+  },
+  {
+    id: 'backend',
+    title: { ru: 'Backend & Архитектура', en: 'Backend & Architecture', kg: 'Backend & Архитектура' },
+    iconName: 'Server',
+    skills: [
+      { label: 'Laravel 12',           level: 'primary' },
+      { label: 'Filament 3',           level: 'primary' },
+      { label: 'REST / RPC APIs',      level: 'primary' },
+      { label: 'Modular architecture', level: 'primary' },
+      { label: 'Multi-tenant systems', level: 'primary' },
+      { label: 'RBAC / ACL',           level: 'primary' },
+      { label: 'PostgreSQL / SQLite',  level: 'primary' },
+      { label: 'Internal platforms',   level: 'primary' },
+      { label: 'Background workers',   level: 'advanced' },
+      { label: 'CLI tools',            level: 'advanced' },
+      { label: 'High-load design',     level: 'conceptual' },
+    ],
+  },
+  {
+    id: 'ai',
+    title: { ru: 'ИИ & LLM', en: 'AI & LLM', kg: 'ЖИ & LLM' },
+    iconName: 'Brain',
+    skills: [
+      { label: 'OpenAI GPT / Codex',        level: 'primary' },
+      { label: 'Anthropic Claude',           level: 'primary' },
+      { label: 'LLM orchestration',          level: 'primary' },
+      { label: 'Prompt engineering',         level: 'primary' },
+      { label: 'Multi-agent architectures',  level: 'primary' },
+      { label: 'AI assistants & bots',       level: 'primary' },
+      { label: 'Token / cost / latency',     level: 'advanced' },
+      { label: 'Context & memory',           level: 'advanced' },
+    ],
+  },
+  {
+    id: 'infra',
+    title: { ru: 'Инфраструктура & DevOps', en: 'Infrastructure & DevOps', kg: 'Инфраструктура & DevOps' },
+    iconName: 'Cloud',
+    skills: [
+      { label: 'Linux (advanced)',    level: 'primary' },
+      { label: 'Docker / Compose',   level: 'primary' },
+      { label: 'VPS / Bare-metal',   level: 'primary' },
+      { label: 'Nginx / Proxy',      level: 'primary' },
+      { label: 'SSL / TLS',          level: 'primary' },
+      { label: 'SSH / Firewall',     level: 'primary' },
+      { label: 'Hetzner',            level: 'advanced' },
+      { label: 'AWS',                level: 'advanced' },
+      { label: 'CI/CD',              level: 'advanced' },
+    ],
+  },
+  {
+    id: 'network',
+    title: { ru: 'Сети & Безопасность', en: 'Networking & Security', kg: 'Тармактар & Коопсуздук' },
+    iconName: 'Network',
+    skills: [
+      { label: 'TCP/IP, DNS, HTTP(S)',   level: 'primary' },
+      { label: 'WireGuard',             level: 'primary' },
+      { label: 'AmneziaWG',             level: 'primary' },
+      { label: 'VPN architectures',     level: 'primary' },
+      { label: 'Key-based access',      level: 'primary' },
+      { label: 'Kali Linux',            level: 'advanced' },
+      { label: 'Offensive / defensive', level: 'conceptual' },
+    ],
+  },
+  {
+    id: 'hardware',
+    title: { ru: 'Hardware & Low-Level', en: 'Hardware & Low-Level', kg: 'Жабдуулар & Төмөнкү деңгээл' },
+    iconName: 'Cpu',
+    skills: [
+      { label: 'Board-level repair',    level: 'primary' },
+      { label: 'Micro-soldering / BGA', level: 'primary' },
+      { label: 'Android bootloader',    level: 'primary' },
+      { label: 'TWRP / Magisk',         level: 'primary' },
+      { label: 'Custom firmware',       level: 'primary' },
+      { label: 'Custom ROMs',           level: 'primary' },
+      { label: 'Kali NetHunter',        level: 'advanced' },
+      { label: 'PC assembly',           level: 'advanced' },
+      { label: 'Power diagnostics',     level: 'advanced' },
+    ],
+  },
+]
+
+export const projects = [
+  {
+    id: 'crm',
+    tech: ['Laravel 12', 'Filament 3', 'PostgreSQL', 'Docker', 'RBAC', 'Multi-tenant'],
+  },
+  {
+    id: 'aibot',
+    tech: ['Python', 'OpenAI', 'Claude API', 'Telegram Bot', 'Multi-agent'],
+  },
+  {
+    id: 'vpn',
+    tech: ['WireGuard', 'AmneziaWG', 'Telegram Bot', 'Linux', 'QR keys'],
+  },
+  {
+    id: 'web',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Laravel', 'SEO'],
+  },
+]
