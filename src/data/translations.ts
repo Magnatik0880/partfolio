@@ -16,6 +16,13 @@ const translations: Record<Locale, Record<string, string>> = {
     'section.certifications': 'Сертификаты',
     'section.contact': 'Контакты',
     'section.about': 'Обо мне',
+    'section.experience': 'Опыт',
+    'section.testimonials': 'Отзывы',
+
+    'hero.download_cv': 'Скачать CV',
+
+    'experience.present': 'наст. время',
+    'testimonials.title': 'Что говорят клиенты',
 
     'about.tag': 'Principal Systems Engineer',
     'about.body': 'Проектирую и создаю сложные технические системы под ключ. Работаю на всех уровнях стека: программное обеспечение, ИИ, инфраструктура, сети, безопасность, операционные системы и низкоуровневое железо. Ключевые компетенции: системное мышление, полная ответственность, надёжность, масштабируемость и реальное продакшен-исполнение.',
@@ -77,6 +84,13 @@ const translations: Record<Locale, Record<string, string>> = {
     'section.certifications': 'Certifications',
     'section.contact': 'Contact',
     'section.about': 'About',
+    'section.experience': 'Experience',
+    'section.testimonials': 'Testimonials',
+
+    'hero.download_cv': 'Download CV',
+
+    'experience.present': 'present',
+    'testimonials.title': 'What clients say',
 
     'about.tag': 'Principal Systems Engineer',
     'about.body': 'I design and build complex technical systems end-to-end. I work across every layer of the stack: software, AI, infrastructure, networking, security, operating systems, and low-level hardware. Core strengths: system-level thinking, full ownership, reliability, scalability, and real-world production execution.',
@@ -139,6 +153,13 @@ const translations: Record<Locale, Record<string, string>> = {
     'section.certifications': 'Сертификаттар',
     'section.contact': 'Байланыш',
     'section.about': 'Мен жөнүндө',
+    'section.experience': 'Тажрыйба',
+    'section.testimonials': 'Пикирлер',
+
+    'hero.download_cv': 'CV жүктөө',
+
+    'experience.present': 'азыр',
+    'testimonials.title': 'Кардарлар эмне дейт',
 
     'about.tag': 'Principal Systems Engineer',
     'about.body': 'Татаал техникалык системаларды баштан аяк долбоорлойм жана куруум. Стектин бардык деңгээлдеринде иштейм: программалык камсыздоо, ЖИ, инфраструктура, тармактар, коопсуздук, операциялык системалар жана төмөнкү деңгээлдеги жабдуулар. Негизги компетенциялар: системалык ой жүгүртүү, толук жоопкерчилик, ишенимдүүлүк, масштабдалуучулук жана реалдуу өндүрүштүк аткаруу.',

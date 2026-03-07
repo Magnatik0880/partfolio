@@ -1,7 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useInView, animate } from 'framer-motion'
 import { useLanguage } from '@/hooks/useLanguage'
+
 import { skillGroups } from '@/data/profile'
 import { ScrollReveal } from './ScrollReveal'
 import type { SkillLevel } from '@/types'
@@ -13,6 +15,24 @@ import {
   type LucideProps,
 } from 'lucide-react'
 import type { FC } from 'react'
+
+function AnimatedCounter({ value, suffix = '' }: { value: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const [display, setDisplay] = useState(0)
+  const isInView = useInView(ref, { once: true })
+
+  useEffect(() => {
+    if (!isInView) return
+    const controls = animate(0, value, {
+      duration: 1.5,
+      ease: 'easeOut',
+      onUpdate: (v) => setDisplay(Math.round(v)),
+    })
+    return () => controls.stop()
+  }, [isInView, value])
+
+  return <span ref={ref}>{display}{suffix}</span>
+}
 
 /* ── Icon map ── */
 const ICON_MAP: Record<string, FC<LucideProps>> = {
@@ -37,11 +57,11 @@ const CARD_STYLES = [
 ]
 
 /* ── Stats ── */
-const STATS: { num: string; label: Record<Locale, string> }[] = [
-  { num: '16+', label: { ru: 'лет опыта',     en: 'years exp',   kg: 'жыл тажрыйба' } },
-  { num: '100+', label: { ru: 'проектов',      en: 'projects',    kg: 'долбоор'       } },
-  { num: '8',   label: { ru: 'направлений',   en: 'services',    kg: 'кызмат'        } },
-  { num: '100%', label: { ru: 'удалённо',      en: 'remote',      kg: 'алыстан'       } },
+const STATS: { value: number; suffix: string; label: Record<Locale, string> }[] = [
+  { value: 16,  suffix: '+',  label: { ru: 'лет опыта',   en: 'years exp',  kg: 'жыл тажрыйба' } },
+  { value: 100, suffix: '+',  label: { ru: 'проектов',    en: 'projects',   kg: 'долбоор'       } },
+  { value: 8,   suffix: '',   label: { ru: 'направлений', en: 'services',   kg: 'кызмат'        } },
+  { value: 100, suffix: '%',  label: { ru: 'удалённо',    en: 'remote',     kg: 'алыстан'       } },
 ]
 
 /* ── Services ── */
@@ -134,9 +154,9 @@ export function SkillsSection() {
 
       {/* ── Stats bar ── */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-14">
-        {STATS.map(({ num, label }, i) => (
+        {STATS.map(({ value, suffix, label }, i) => (
           <motion.div
-            key={num}
+            key={label.en}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -146,7 +166,9 @@ export function SkillsSection() {
           >
             {/* Glow bg */}
             <div className="absolute inset-0 bg-neon-cyan/[0.02] pointer-events-none" />
-            <div className="text-3xl sm:text-4xl font-black text-neon-cyan neon-text leading-none">{num}</div>
+            <div className="text-3xl sm:text-4xl font-black text-neon-cyan neon-text leading-none">
+              <AnimatedCounter value={value} suffix={suffix} />
+            </div>
             <div className="text-[11px] text-zinc-500 font-mono mt-1.5 uppercase tracking-widest">{label[locale]}</div>
           </motion.div>
         ))}

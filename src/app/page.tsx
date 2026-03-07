@@ -1,11 +1,13 @@
 import { NavBar } from '@/components/ui/NavBar'
 import { HeroSection } from '@/components/ui/HeroSection'
 import { AboutSection } from '@/components/ui/AboutSection'
+import { ExperienceSection } from '@/components/ui/ExperienceSection'
 import { ProjectsSection } from '@/components/ui/ProjectsSection'
 import { SkillsSection } from '@/components/ui/SkillsSection'
 import { CertificationsSection } from '@/components/ui/CertificationsSection'
 import { HardwareSection } from '@/components/ui/HardwareSection'
 import { ContactSection } from '@/components/ui/ContactSection'
+import { TestimonialsSection } from '@/components/ui/TestimonialsSection'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 
 function SectionWrapper({
@@ -43,10 +45,19 @@ function SectionWrapper({
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main id="main-content" className="min-h-screen bg-background text-foreground">
       <NavBar />
       <HeroSection />
       <AboutSection />
+
+      <SectionWrapper
+        id="experience"
+        titleEn="Experience"
+        accentClass="text-neon-cyan neon-text"
+        barClass="bg-neon-cyan"
+      >
+        <ExperienceSection />
+      </SectionWrapper>
 
       <SectionWrapper
         id="projects"
@@ -85,6 +96,15 @@ export default function Home() {
       </SectionWrapper>
 
       <ContactSection />
+
+      <SectionWrapper
+        id="testimonials"
+        titleEn="Testimonials"
+        accentClass="text-neon-gold"
+        barClass="bg-neon-gold"
+      >
+        <TestimonialsSection />
+      </SectionWrapper>
     </main>
   )
 }

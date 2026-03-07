@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { motion, useReducedMotion } from 'framer-motion'
+import { FileDown } from 'lucide-react'
 import { useLanguage } from '@/hooks/useLanguage'
 import { ParticleCanvas } from './ParticleCanvas'
 import type { Locale } from '@/types'
@@ -277,49 +278,65 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.5 }}
-            className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
+            className="flex flex-col items-center lg:items-start gap-3 w-full"
           >
-            <a
-              href="https://t.me/sancho_mobo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-7 py-3 rounded-full border border-neon-cyan text-neon-cyan text-sm font-semibold
-                         hover:bg-neon-cyan hover:text-black transition-all duration-300 glow-cyan-hover
-                         font-mono tracking-wider"
-            >
-              Telegram ↗
-            </a>
-            <a
-              href="https://wa.me/996550590501"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-7 py-3 rounded-full border border-neon-green text-neon-green text-sm font-semibold
-                         hover:bg-neon-green hover:text-black transition-all duration-300
-                         font-mono tracking-wider"
-            >
-              WhatsApp ↗
-            </a>
-            <a
-              href="https://github.com/sancho-mobo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-7 py-3 rounded-full border border-zinc-600 text-zinc-300 text-sm font-semibold
-                         hover:border-white/40 hover:text-white transition-all duration-300
-                         font-mono tracking-wider"
-            >
-              GitHub ↗
-            </a>
-            <button
-              onClick={() => {
-                const el = document.querySelector('#projects')
-                if (el) el.scrollIntoView({ behavior: 'smooth' })
-              }}
-              className="px-7 py-3 rounded-full border border-zinc-700 text-zinc-400 text-sm font-semibold
-                         hover:border-neon-cyan/40 hover:text-neon-cyan transition-all duration-300
-                         font-mono tracking-wider"
-            >
-              {t('section.projects')} ↓
-            </button>
+            {/* Row 1: social links */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <a
+                href="https://t.me/sancho_mobo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2.5 rounded-full border border-neon-cyan text-neon-cyan text-sm font-semibold
+                           hover:bg-neon-cyan hover:text-black transition-all duration-300 glow-cyan-hover
+                           font-mono tracking-wider"
+              >
+                Telegram ↗
+              </a>
+              <a
+                href="https://wa.me/996550590501"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2.5 rounded-full border border-neon-green text-neon-green text-sm font-semibold
+                           hover:bg-neon-green hover:text-black transition-all duration-300
+                           font-mono tracking-wider"
+              >
+                WhatsApp ↗
+              </a>
+              <a
+                href="https://github.com/sancho-mobo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2.5 rounded-full border border-zinc-600 text-zinc-300 text-sm font-semibold
+                           hover:border-white/40 hover:text-white transition-all duration-300
+                           font-mono tracking-wider"
+              >
+                GitHub ↗
+              </a>
+            </div>
+            {/* Row 2: CV + scroll */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <a
+                href="/resume.pdf"
+                download
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/25 text-zinc-300 text-sm font-semibold
+                           hover:border-white/60 hover:text-white transition-all duration-300
+                           font-mono tracking-wider"
+              >
+                <FileDown size={14} strokeWidth={2} />
+                {t('hero.download_cv')}
+              </a>
+              <button
+                onClick={() => {
+                  const el = document.querySelector('#projects')
+                  if (el) el.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="px-6 py-2.5 rounded-full border border-zinc-700 text-zinc-400 text-sm font-semibold
+                           hover:border-neon-cyan/40 hover:text-neon-cyan transition-all duration-300
+                           font-mono tracking-wider"
+              >
+                {t('section.projects')} ↓
+              </button>
+            </div>
           </motion.div>
         </div>
 

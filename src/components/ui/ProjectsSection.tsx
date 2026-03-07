@@ -1,10 +1,10 @@
 'use client'
 
-import { type FC } from 'react'
-import { motion } from 'framer-motion'
+import { type FC, useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   Database, Bot, Shield, Globe,
-  HeartPulse, Smartphone, ExternalLink,
+  HeartPulse, Smartphone, ExternalLink, X,
   type LucideProps,
 } from 'lucide-react'
 import { useLanguage } from '@/hooks/useLanguage'
@@ -130,8 +130,26 @@ const bentoConfig: BentoEntry[] = [
 
 export function ProjectsSection() {
   const { t, locale } = useLanguage()
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+
+  useEffect(() => {
+    if (selectedIndex === null) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedIndex(null)
+    }
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [selectedIndex])
+
+  const selectedProject = selectedIndex !== null ? projects[selectedIndex] : null
+  const selectedCfg = selectedIndex !== null ? bentoConfig[selectedIndex] : null
 
   return (
+    <>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {projects.map((project, i) => {
         const cfg = bentoConfig[i]
@@ -146,8 +164,9 @@ export function ProjectsSection() {
 
               {/* Inner card */}
               <div
+                onClick={() => setSelectedIndex(i)}
                 className={`relative h-full rounded-2xl bg-surface overflow-hidden
-                            transition-all duration-300 cursor-default
+                            transition-all duration-300 cursor-pointer
                             group-hover:bg-surface-hover group-hover:-translate-y-1
                             ${cfg.borderHover} ${cfg.glowHover}`}
               >
@@ -262,5 +281,97 @@ export function ProjectsSection() {
         )
       })}
     </div>
+
+    {/* ── Project Modal ── */}
+    <AnimatePresence>
+      {selectedProject && selectedCfg && (
+        <motion.div
+          key="modal-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          style={{ backdropFilter: 'blur(8px)', background: 'rgba(0,0,0,0.7)' }}
+          onClick={() => setSelectedIndex(null)}
+        >
+          <motion.div
+            key="modal-card"
+            initial={{ scale: 0.88, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.88, opacity: 0, y: 20 }}
+            transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-lg rounded-2xl p-5 md:p-7 glass-card max-h-[88vh] overflow-y-auto"
+            style={{ border: `1px solid ${selectedCfg.gradientVar}44` }}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedIndex(null)}
+              className="absolute top-4 right-4 w-8 h-8 rounded-full border border-white/10 flex items-center justify-center
+                         text-zinc-400 hover:text-white hover:border-white/30 transition-colors"
+              aria-label="Close"
+            >
+              <X size={14} strokeWidth={2} />
+            </button>
+
+            {/* Header */}
+            <div className="flex items-center gap-3 mb-5">
+              <div className={`w-10 h-10 rounded-xl border flex items-center justify-center flex-shrink-0 ${selectedCfg.iconBg}`}>
+                <selectedCfg.Icon size={18} className={selectedCfg.textColor} strokeWidth={1.5} />
+              </div>
+              <div>
+                <span className={`text-[9px] font-mono tracking-[0.2em] uppercase opacity-70 ${selectedCfg.textColor}`}>
+                  {selectedCfg.category[locale]}
+                </span>
+                <h3 className={`text-xl font-bold ${selectedCfg.textColor}`}>
+                  {t(`projects.${selectedProject.id}.title`)}
+                </h3>
+              </div>
+              <span className={`ml-auto text-[9px] font-mono tracking-wider px-2 py-0.5 rounded border ${selectedCfg.tagClass} opacity-80`}>
+                {selectedCfg.status}
+              </span>
+            </div>
+
+            {/* Role */}
+            {selectedCfg.role && (
+              <p className="text-[11px] font-mono text-zinc-500 mb-4 tracking-wider">
+                ↳ {selectedCfg.role[locale]}
+              </p>
+            )}
+
+            {/* Description */}
+            <p className="text-sm text-zinc-300 leading-relaxed mb-6">
+              {t(`projects.${selectedProject.id}.desc`)}
+            </p>
+
+            {/* Tech tags */}
+            <div className="flex flex-wrap gap-2 mb-5">
+              {selectedProject.tech.map((tech) => (
+                <span key={tech} className={`rounded-full border px-2.5 py-0.5 text-[11px] font-mono ${selectedCfg.tagClass}`}>
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* External link */}
+            {selectedCfg.url && (
+              <a
+                href={selectedCfg.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 text-[12px] font-mono font-semibold
+                            px-4 py-2 rounded-xl border transition-colors duration-200
+                            opacity-80 hover:opacity-100 ${selectedCfg.tagClass}`}
+              >
+                <ExternalLink size={12} strokeWidth={2} />
+                {locale === 'ru' ? 'Открыть сайт' : locale === 'en' ? 'Visit website' : 'Сайтты ачуу'}
+              </a>
+            )}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   )
 }

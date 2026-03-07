@@ -6,6 +6,7 @@ import { useLanguage } from '@/hooks/useLanguage'
 import { LanguageToggle } from './LanguageToggle'
 
 const NAV_ITEMS = [
+  { key: 'section.experience',     href: '#experience'     },
   { key: 'section.projects',       href: '#projects'       },
   { key: 'section.skills',         href: '#skills'         },
   { key: 'section.certifications', href: '#certifications' },
@@ -44,8 +45,10 @@ export function NavBar() {
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <button
+          type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="text-xl font-black neon-text tracking-widest hover:opacity-80 transition-opacity"
+          aria-label="Go to top"
         >
           SANCHO
         </button>
@@ -55,8 +58,10 @@ export function NavBar() {
           {NAV_ITEMS.map(({ key, href }, i) => (
             <button
               key={key}
+              type="button"
               onClick={() => handleNavClick(href)}
               className="group flex flex-col items-center gap-0.5 relative"
+              aria-label={String(t(key))}
             >
               <span className="font-mono text-[9px] text-neon-cyan/30 group-hover:text-neon-cyan/70 transition-colors tabular-nums tracking-widest">
                 0{i + 1}
@@ -74,9 +79,11 @@ export function NavBar() {
           <LanguageToggle />
           {/* Mobile hamburger */}
           <button
+            type="button"
             className="md:hidden text-zinc-400 hover:text-neon-cyan transition-colors p-1"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
             <div className="w-5 flex flex-col gap-1.5">
               <span
