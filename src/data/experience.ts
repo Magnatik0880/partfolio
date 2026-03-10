@@ -18,7 +18,7 @@ export const experiences: Experience[] = [
     year: '2020–2024',
     role: 'Full-Stack Developer & AI Engineer',
     company: 'Self-employed',
-    desc: 'Разработка SaaS-платформ, Telegram-ботов с интеграцией LLM (OpenAI, Claude), автоматизация бизнес-процессов. Проекты для клиентов из России, Кыргызстана и СНГ.',
+    desc: 'Разработка SaaS-платформ, Telegram-ботов с интеграцией LLM, автоматизация бизнес-процессов. Проекты для клиентов из России, Кыргызстана и СНГ.',
     color: 'green',
   },
   {
